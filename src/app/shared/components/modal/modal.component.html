@@ -1,0 +1,33 @@
+<div
+  *ngIf="showModal"
+  class="modal-container"
+>
+  <div class="modal-content">
+    <div class="modal-header">
+      <span
+        class="modal-title"
+        [innerHTML]="title | safe:'html'"
+      ></span>
+      <mat-icon
+        *ngIf="showCloseButton"
+        class="modal-close"
+        (click)="doCloseModal()"
+      >close</mat-icon>
+    </div>
+
+    <div
+      class="modal-body"
+      [innerHTML]="body | safe:'html'"
+    ></div>
+
+    <div
+      *ngIf="buttons && buttons.length > 0"
+      class="modal-buttons"
+    >
+      <app-link
+        *ngFor="let btn of buttons"
+        [setItem]="btn"
+      ></app-link>
+    </div>
+  </div>
+</div>

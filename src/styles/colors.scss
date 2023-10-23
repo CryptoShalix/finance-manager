@@ -1,0 +1,43 @@
+// PRIMARY COLORS
+$color-black: rgb(0, 0, 0);
+$color-black-2: rgb(36, 41, 46);
+$color-yellow-1: rgb(237, 193, 108);
+$color-blue-1: rgb(63, 81, 181);
+$color-red-1: rgb(181, 63, 63);
+$color-green-1: rgb(63, 181, 69);
+$color-white: rgb(255, 255, 255);
+$color-white-1: rgb(250, 250, 250);
+$color-grey-1: rgb(238, 238, 238);
+$color-grey-2: rgb(176, 176, 176);
+$color-brown-1: rgba(255, 64, 129, 0.25);
+
+// THEME
+$my-primary: $color-black;
+$my-secondary: $color-white;
+$my-accent: $color-yellow-1;
+$my-warn: $color-brown-1;
+$theme-info: $color-blue-1;
+$theme-success: $color-green-1;
+$theme-alert: $color-yellow-1;
+$theme-error: $color-red-1;
+
+// BODY
+$body-background: $color-white;
+$body-text: $color-black;
+
+// TOOLBAR
+$toolbar-text: $color-black;
+$toolbar-background: $color-white;
+$toolbar-border: $color-black;
+
+// MENU
+$menu-color: $my-primary;
+$menu-color-hover: $my-accent;
+
+// CONTENT
+$content-background: $color-white;
+$content-text: $color-black;
+
+// LINK
+$tooltip-background: $color-white;
+$tooltip-shadow: $color-black;

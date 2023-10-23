@@ -1,0 +1,246 @@
+@import '../../../../styles/colors.scss';
+
+$p-transition: 1s;
+
+.link {
+
+  .link-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $my-primary;
+    opacity: .75;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    .svg {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 25px;
+      height: 25px;
+
+      path {
+        fill: $my-primary;
+      }
+    }
+
+    .img {
+      width: 35px;
+      height: 35px;
+    }
+  }
+
+  .card {
+    all: unset;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+    height: 40px;
+    margin: 8px;
+    padding: 16px;
+    line-height: 24px;
+    text-align: right;
+    background-color: $my-secondary;
+    border: 1px solid $color-grey-1;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+
+    &.card-small {
+      width: 168px;
+      height: 16px;
+    }
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 17px rgba($my-primary, 0.35);
+    }
+  }
+
+  .circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    margin: 5px;
+    border-radius: 40px;
+    background-color: $my-secondary;
+    border: none;
+    box-shadow: 0 1px 3px rgba($my-primary, .25), 0 1px 2px rgba($my-primary, 0.25);
+    transition: $p-transition ease-out;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-0.25rem);
+      box-shadow: 0px 3px 15px rgba($my-primary, 0.9);
+    }
+  }
+
+  .square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    margin: 5px;
+    border-radius: 4px;
+    background-color: $my-secondary;
+    border: none;
+    box-shadow: 0 1px 3px rgba($my-primary, .25), 0 1px 2px rgba($my-primary, 0.25);
+    transition: $p-transition ease-out;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-0.25rem);
+      box-shadow: 0px 3px 15px rgba($my-primary, 0.9);
+    }
+  }
+
+  .badge {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: fit-content;
+    margin-left: 4px;
+    padding: 3px 10px;
+    color: $my-primary;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid rgba($my-accent, .2);
+    border-radius: 3px;
+    background-image: linear-gradient(-180deg, $my-secondary, $my-secondary 90%);
+    cursor: pointer;
+
+    &:hover {
+      background-image: linear-gradient(-180deg, $my-secondary, $my-secondary 90%);
+      border-color: rgba($my-primary, .35);
+      background-position: -.5em;
+    }
+
+    .link-icon {
+      color: $my-primary;
+
+      .svg,
+      .img,
+      .ico {
+        width: 16px;
+        height: 16px;
+        font-size: 16px;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .button {
+    all: unset;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 150px;
+    height: 30px;
+    margin: 5px;
+    padding: 5px;
+    line-height: 24px;
+    text-align: right;
+    background-color: $my-secondary;
+    border: 1px solid $color-grey-1;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 17px rgba($my-primary, 0.35);
+    }
+  }
+
+  .router-link-active {
+    &.card {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 17px rgba($my-accent, 0.35);
+    }
+
+    &.circle {
+      transform: translateY(-0.25rem);
+      box-shadow: 0px 3px 15px rgba($my-primary, 0.25);
+    }
+
+    &.square {
+      transform: translateY(-0.25rem);
+      box-shadow: 0px 3px 15px rgba($my-primary, 0.25);
+    }
+
+    &.badge {
+      background-image: linear-gradient(-180deg, $my-secondary, $my-secondary 90%);
+      border-color: rgba($my-accent, .35);
+      background-position: -.5em;
+    }
+  }
+
+  .tooltip-text {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: auto;
+    min-width: 50%;
+    min-height: 30px;
+    top: 62.5px;
+    left: 0;
+    right: 0;
+    margin: 5px;
+    background: $tooltip-background;
+    box-shadow: 0px 0px 10px $tooltip-shadow;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    visibility: hidden;
+  }
+
+  &.tooltip:hover .tooltip-text {
+    visibility: visible;
+  }
+}
+
+// SMALL RESOLUTION DEVICES
+@media screen and (max-width: 767px) {
+  .link {
+
+    .card,
+    .card.card-small {
+      width: 168px;
+      height: 16px;
+      margin: 8px 0;
+    }
+
+    .tooltip-text {
+      top: 92.5px;
+    }
+  }
+}
+
+// TOUCHSCREEN DEVICES
+@media (hover: none) {
+  .link {
+
+    .card,
+    .circle,
+    .square,
+    .badge {
+
+      .link-icon {
+        opacity: 1;
+      }
+    }
+  }
+}

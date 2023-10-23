@@ -1,0 +1,83 @@
+@import '../../../../styles/colors.scss';
+
+.modal-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background: rgba($my-primary, .25);
+  overflow: hidden;
+  z-index: 1000;
+
+  .modal-content {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    min-height: 15%;
+    max-height: 50%;
+    top: 50%;
+    left: 50%;
+    margin: 0;
+    padding: .25rem;
+    letter-spacing: .1rem;
+    background: $my-secondary;
+    overflow: hidden;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    box-shadow: 0 4px 17px rgba($my-primary, 0.35);
+
+    .modal-header {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.25rem 1rem;
+      border-bottom: 1px solid $my-primary;
+
+      .modal-title {
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+
+      .modal-close {
+        width: 30px;
+        height: 30px;
+        padding: 0;
+        font-size: 30px;
+        color: $theme-error;
+        cursor: pointer;
+
+        &:hover {
+          font-weight: bold;
+          text-shadow: 0px 0px 10px rgba($my-primary, .25);
+        }
+      }
+    }
+
+    .modal-body {
+      padding: 1rem;
+      overflow: auto;
+    }
+
+    .modal-buttons {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: flex-end;
+      height: 50px;
+      padding: 0.25rem 1rem;
+      border-top: 1px solid $my-primary;
+    }
+  }
+}
+
+// MEDIA QUERIES
+
+@media (hover: none) {
+  .modal-close {
+    font-weight: bold;
+    text-shadow: 0px 0px 10px rgba($my-primary, .25);
+  }
+}
