@@ -1,0 +1,21 @@
+[
+  {
+    "APP": {
+      "name": "Finance Manager"
+    },
+    "BUTTONS": {
+      "accept": "Aceptar",
+      "cancel": "Cancelar",
+      "change_currency": "Cambiar divisa",
+      "change_language": "Cambiar idioma",
+      "download": "Exportar",
+      "import": "Importar",
+      "refresh": "Actualizar",
+      "upload": "Importar"
+    },
+    "MSG": {
+      "appCredits": "{APP_TITLE} es una web creada por <a class='selected' target='_blank' href='https://linktr.ee/BitAkashico'>@CryptoShalix</a>",
+      "appRightsReserved": "Todos los derechos reservados"
+    }
+  }
+]
