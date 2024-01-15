@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   modalItem: ModalItem = new ModalItem();
 
   constructor(
-    private coreService: CoreService,
+    private coreService: CoreService
   ) { }
 
   ngOnInit(): void {
@@ -60,21 +60,26 @@ export class AppComponent implements OnInit {
   private doUpload() {
     const btnAccept = BUTTONS.accept(() => { this.coreService.uploadData(); });
     const btnCancel = BUTTONS.cancel();
-
-    this.coreService.messageInfo(
-      'Titulo',
-      'Lorem ipsum dolor sit amet, consectetur mio protrastec net. Lorem ipsum dolor sit amet, consectetur mio protrastec net. Lorem ipsum dolor sit amet, consectetur mio protrastec net. Lorem ipsum dolor sit amet, consectetur mio protrastec net. Lorem ipsum dolor sit amet, consectetur mio protrastec net. Lorem ipsum dolor sit amet, consectetur mio protrastec net. Lorem ipsum dolor sit amet, consectetur mio protrastec net. Lorem ipsum dolor sit amet, consectetur mio protrastec net. Lorem ipsum dolor sit amet, consectetur mio protrastec net. Lorem ipsum dolor sit amet, consectetur mio protrastec net. Lorem ipsum dolor sit amet, consectetur mio protrastec net. Lorem ipsum dolor sit amet, consectetur mio protrastec net. Lorem ipsum dolor sit amet, consectetur mio protrastec net. Lorem ipsum dolor sit amet, consectetur mio protrastec net. Lorem ipsum dolor sit amet, consectetur mio protrastec net. Lorem ipsum dolor sit amet, consectetur mio protrastec net. Lorem ipsum dolor sit amet, consectetur mio protrastec net. Lorem ipsum dolor sit amet, consectetur mio protrastec net. Lorem ipsum dolor sit amet, consectetur mio protrastec net. Lorem ipsum dolor sit amet, consectetur mio protrastec net. Lorem ipsum dolor sit amet, consectetur mio protrastec net. Lorem ipsum dolor sit amet, consectetur mio protrastec net. Lorem ipsum dolor sit amet, consectetur mio protrastec net. Lorem ipsum dolor sit amet, consectetur mio protrastec net. Lorem ipsum dolor sit amet, consectetur mio protrastec net. Lorem ipsum dolor sit amet, consectetur mio protrastec net. Lorem ipsum dolor sit amet, consectetur mio protrastec net. Lorem ipsum dolor sit amet, consectetur mio protrastec net.',
-      [btnAccept, btnCancel]
-    );
+    this.coreService.messageInfo('MSG.actionUploadTitle', 'MSG.actionUpload', [btnAccept, btnCancel]);
   }
 
   private doDownload() {
-    this.coreService.downloadData('');
+    this.coreService.downloadDB();
   }
 
+  /**
+   * TODO: Force update of prices in current currency
+   */
   private doRefresh() { }
 
+  /**
+   * TODO: Add english .json language, store in localStorage and do change on this event
+   */
   private doChangeLanguage() { }
 
+  /**
+   * TODO: Show a select with different currencies (€, $, B, etc), and allow to choose one.
+   * Store on localStorage
+   */
   private doChangeCurrency() { }
 }

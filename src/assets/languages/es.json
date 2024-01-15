@@ -10,10 +10,12 @@
       "change_language": "Cambiar idioma",
       "download": "Exportar",
       "import": "Importar",
-      "refresh": "Actualizar",
+      "refresh": "Actualizar precios",
       "upload": "Importar"
     },
     "MSG": {
+      "actionUploadTitle": "Importar",
+      "actionUpload": "Se importará una base de datos en formato .json desde su equipo local y se eliminará cualquier base de datos almacenada en su navegador.<br/><br/>¿Si está de acuerdo haga clic en 'Aceptar'?",
       "appCredits": "{APP_TITLE} es una web creada por <a class='selected' target='_blank' href='https://linktr.ee/BitAkashico'>@CryptoShalix</a>",
       "appRightsReserved": "Todos los derechos reservados"
     }

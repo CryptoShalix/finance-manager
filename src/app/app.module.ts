@@ -37,7 +37,7 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy
-    }
+    },
   ],
   bootstrap: [AppComponent]
 })

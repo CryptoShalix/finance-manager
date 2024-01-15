@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 
 import { ModalItem } from './modal.entity';
 import { LinkItem } from '../link/link.entity';
+import { BUTTONS } from '../../models/core';
 
 @Component({
   selector: 'app-modal',
@@ -15,17 +16,9 @@ export class ModalComponent {
     this.title = _modal.title;
     this.body = _modal.body;
     this.buttons = _modal.buttons;
-    this.buttons.forEach(btn => {
-      btn.action = () => {
-        console.log(btn.action.length);
-        if (btn.action.length === 0) {
-          this.doCloseModal();
-        } else {
-          this.toPromise(this.doCloseModal()).finally(btn.action);
-        }
-      };
-    });
-    console.log(this.buttons);
+    if (this.buttons.length === 0) {
+      this.buttons.push(BUTTONS.cancel());
+    }
   }
 
   showModal = false;
@@ -38,9 +31,5 @@ export class ModalComponent {
 
   doCloseModal() {
     this.showModal = false;
-  }
-
-  private toPromise(_method: void): Promise<void> {
-    return new Promise((resolve) => resolve(_method));
   }
 }

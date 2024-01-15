@@ -6,7 +6,7 @@
     <div class="modal-header">
       <span
         class="modal-title"
-        [innerHTML]="title | safe:'html'"
+        [innerHTML]="title | translate | safe:'html'"
       ></span>
       <mat-icon
         *ngIf="showCloseButton"
@@ -17,7 +17,7 @@
 
     <div
       class="modal-body"
-      [innerHTML]="body | safe:'html'"
+      [innerHTML]="body | translate | safe:'html'"
     ></div>
 
     <div
@@ -27,6 +27,7 @@
       <app-link
         *ngFor="let btn of buttons"
         [setItem]="btn"
+        (click)="doCloseModal()"
       ></app-link>
     </div>
   </div>

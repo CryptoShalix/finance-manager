@@ -25,6 +25,12 @@ body {
   flex: 1;
 }
 
+// SELECTION
+::selection {
+  color: $my-secondary;
+  background: rgba($my-primary, .75);
+}
+
 // SCROLLBAR
 
 /* width */

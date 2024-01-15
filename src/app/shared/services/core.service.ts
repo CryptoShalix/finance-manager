@@ -1,5 +1,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 
+import { StorageService } from './storage.service';
+
 import { ModalItem } from '../components/modal/modal.entity';
 import { LinkItem } from '../components/link/link.entity';
 
@@ -7,9 +9,15 @@ import { LinkItem } from '../components/link/link.entity';
   providedIn: 'root'
 })
 export class CoreService {
-  // PUBLIC
+  // VARIABLES: PUBLIC
   public static appTitle = 'Finance Manager';
+
+  // VARIABLES: PRIVATE
   private userLanguage: string = '';
+
+  constructor(
+    private storage: StorageService,
+  ) { }
 
   // LANGUAGE
 
@@ -21,13 +29,17 @@ export class CoreService {
 
   eModalItem = new EventEmitter<ModalItem>();
 
-  messageInfo(title: string, body: string, buttons: LinkItem[] = []) {
+  messageInfo(
+    title: string,
+    body: string,
+    buttons: LinkItem[] = []
+  ) {
     const _modalItem = new ModalItem({
       title,
       body,
-      showCloseButton: true,
+      buttons,
       showModal: true,
-      buttons
+      showCloseButton: true,
     });
     this.eModalItem.next(_modalItem);
   }
@@ -59,6 +71,14 @@ export class CoreService {
 
   // FILE
 
+  downloadDB() {
+    const data = this.storage.getTransactions();
+    if (data && data.length > 0) {
+      const fileName = 'finance_manager_' + new Date();
+      this.downloadData(JSON.stringify(data), fileName);
+    }
+  }
+
   downloadData(data: string, fileName: string = '', fileExtension: string = 'json') {
     const dlink: HTMLAnchorElement = document.createElement('a');
     dlink.download = `${fileName}.${fileExtension}`;
@@ -67,12 +87,32 @@ export class CoreService {
     dlink.remove();
   }
 
+  /**
+   * Creates an HTMLInputElement to show a dialog so the user can choose a .json file and then read that file data.
+   * 
+   * Source: https://stackoverflow.com/questions/47581687/read-a-file-and-parse-its-content
+   */
   uploadData() {
     //https://stackoverflow.com/questions/47581687/read-a-file-and-parse-its-content
     const dlink: HTMLInputElement = document.createElement('input');
     dlink.setAttribute('type', 'file');
     dlink.setAttribute('accept', '.json');
     dlink.click();
+    dlink.onchange = (e) => this.readData(e);
     dlink.remove();
+  }
+
+  private readData(e: any) {
+    const file = e.target.files[0];
+    if (file) {
+      const fileReader = new FileReader();
+      fileReader.onload = (e) => {
+        const data = fileReader.result as string;
+        if (!this.isNullOrEmpty(data)) {
+          this.storage.saveTransactionsAsString(data);
+        }
+      }
+      fileReader.readAsText(file);
+    }
   }
 }

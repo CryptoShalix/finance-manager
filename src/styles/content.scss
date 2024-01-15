@@ -112,10 +112,10 @@
     position: relative;
     display: block;
     width: 100%;
-    min-height: calc(100vh - 100px);
+    min-height: calc(100vh - 160px);
     top: 0;
     bottom: 0;
-    margin: 50px auto;
+    margin: 60px auto 100px;
     padding: 0;
     background: rgba($content-background, .25);
     overflow: hidden;
@@ -132,11 +132,6 @@
 
 /* RESPONSIVE STYLES */
 @media screen and (max-width: 1256px) {
-  .main-container {
-    min-height: calc(100vh - 200px) !important;
-    margin: 100px auto !important;
-  }
-
   .toolbar-bottom {
     flex-direction: column !important;
     height: 100px !important;
@@ -145,6 +140,11 @@
 }
 
 @media screen and (max-width: 768px) {
+  .main-container {
+    min-height: calc(100vh - 200px);
+    margin: 100px auto !important;
+  }
+
   .toolbar-top {
     height: 80px !important;
     flex-direction: column !important;
