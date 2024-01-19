@@ -5,6 +5,7 @@ import { CoreService } from './core.service';
 import { ValueText } from '../models/core';
 
 import * as jsonES from '../../../assets/languages/es.json';
+import * as jsonEN from '../../../assets/languages/en.json';
 
 export enum ELanguage {
   EN = 'en',
@@ -32,14 +33,12 @@ export class TranslateService {
       this.userLang = navigator.language || window.navigator.language;
       this.userLang = this.userLang.split('-')[0];
     }
-    this.coreService.setUserLanguage(this.userLang);
     this.logger();
   }
 
   setUserLanguage(newLanguage: ELanguage): void {
     this.userLang = newLanguage;
     localStorage.setItem(this.cUserLanguage, this.userLang);
-    this.coreService.setUserLanguage(this.userLang);
     this.logger();
   }
 
@@ -101,6 +100,7 @@ export class TranslateService {
 
   private getJSONFile(): any {
     switch (this.userLang) {
+      case ELanguage.EN: return (jsonEN as any).default;
       case ELanguage.ES:
       default: return (jsonES as any).default;
     }

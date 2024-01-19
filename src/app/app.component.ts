@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CoreService } from './shared/services/core.service';
+import { TranslateService } from './shared/services/translate.service';
 
 import { LinkItem, LinkItemCircle } from './shared/components/link/link.entity';
 import { ModalItem } from './shared/components/modal/modal.entity';
@@ -20,7 +21,8 @@ export class AppComponent implements OnInit {
   modalItem: ModalItem = new ModalItem();
 
   constructor(
-    private coreService: CoreService
+    private coreService: CoreService,
+    private translateService: TranslateService,
   ) { }
 
   ngOnInit(): void {
@@ -39,6 +41,9 @@ export class AppComponent implements OnInit {
     ));
     this.btnMenu.push(LinkItemCircle.createButton(
       'refresh', 'refresh', () => this.doRefresh()
+    ));
+    this.btnMenu.push(LinkItemCircle.createButton(
+      'settings', 'settings', () => this.doOpenSettings()
     ));
   }
 
@@ -73,9 +78,16 @@ export class AppComponent implements OnInit {
   private doRefresh() { }
 
   /**
-   * TODO: Add english .json language, store in localStorage and do change on this event
+   * TODO: Open settings page
    */
-  private doChangeLanguage() { }
+  private doOpenSettings() { }
+
+  /**
+   * Automatically changes the language between ES (Spanish) and EN (English)
+   */
+  private doChangeLanguage() {
+    this.translateService.toggleUserLanguage();
+  }
 
   /**
    * TODO: Show a select with different currencies (€, $, B, etc), and allow to choose one.

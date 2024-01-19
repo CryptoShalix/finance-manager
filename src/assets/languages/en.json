@@ -1,0 +1,24 @@
+[
+  {
+    "APP": {
+      "name": "Finance Manager"
+    },
+    "BUTTONS": {
+      "accept": "OK",
+      "cancel": "Cancel",
+      "change_currency": "Change currency",
+      "change_language": "Change language",
+      "download": "Export",
+      "import": "Import",
+      "refresh": "Update prices",
+      "settings": "Settings",
+      "upload": "Import"
+    },
+    "MSG": {
+      "actionUploadTitle": "Import",
+      "actionUpload": "A database in .json format will be imported from your local computer and any database stored in your browser will be deleted.<br/><br/>If you agree, click 'OK'?",
+      "appCredits": "{APP_TITLE} is a website created by <a class='selected' target='_blank' href='https://linktr.ee/BitAkashico'>@CryptoShalix</a>",
+      "appRightsReserved": "All rights reserved"
+    }
+  }
+]

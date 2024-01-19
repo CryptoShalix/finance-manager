@@ -12,18 +12,9 @@ export class CoreService {
   // VARIABLES: PUBLIC
   public static appTitle = 'Finance Manager';
 
-  // VARIABLES: PRIVATE
-  private userLanguage: string = '';
-
   constructor(
     private storage: StorageService,
   ) { }
-
-  // LANGUAGE
-
-  setUserLanguage(userLang: string): void {
-    this.userLanguage = userLang;
-  }
 
   // MODAL-DIALOG
 

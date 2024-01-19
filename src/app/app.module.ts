@@ -12,11 +12,13 @@ import { PipesModule } from './shared/pipes/pipes.module';
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
+import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainPageComponent,
+    SettingsPageComponent,
   ],
   imports: [
     CommonModule,
