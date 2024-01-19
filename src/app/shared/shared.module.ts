@@ -8,6 +8,7 @@ import { PipesModule } from './pipes/pipes.module';
 
 import { LinkModule } from './components/link/link.module';
 import { ModalModule } from './components/modal/modal.module';
+import { MessageManagerModule } from './components/message-manager/message.manager.module';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { ModalModule } from './components/modal/modal.module';
     PipesModule,
     LinkModule,
     ModalModule,
+    MessageManagerModule,
   ],
   exports: [
     LinkModule,

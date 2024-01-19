@@ -1,0 +1,116 @@
+// COLORS
+$color-primary-1: rgb(0, 0, 0);
+$color-primary-2: rgb(34, 34, 34);
+$color-primary-3: rgb(44, 47, 51);
+$color-secondary-1: rgb(255, 255, 255);
+$color-secondary-2: rgb(221, 221, 221);
+$color-secondary-3: rgb(202, 202, 202);
+
+// STARS AND OTHER SPECIAL ICONS
+$color-positive: #006e21;
+$color-negative: #6e0000;
+$color-special-1: #edc16c;
+$color-special-2: #f7931a;
+$color-special-3: #ffcc11;
+
+// MESSAGE MANAGER
+$msg-container-text: $color-primary-2;
+$msg-container-background: $color-secondary-1;
+$msg-container-border: $color-primary-1;
+$msg-container-success: $color-positive;
+$msg-container-error: $color-negative;
+$msg-container-alert: $color-special-1;
+
+.msgMainContainer {
+  position: fixed;
+  display: flex;
+  flex-direction: column-reverse;
+  width: 5%;
+  min-width: 300px;
+  height: auto;
+  bottom: 15px;
+  padding: 5px;
+  margin: 0;
+  border-radius: 10px;
+  overflow-y: auto;
+  z-index: 99999;
+
+  &.hideMessages {
+    display: none;
+  }
+
+  &.showOnLeft {
+    left: 15px;
+  }
+
+  &.showOnRight {
+    right: 15px;
+  }
+}
+
+.msgContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  min-height: 50px;
+  margin: 10px auto 0;
+  padding: 2px;
+  text-align: justify;
+  font-size: 12px;
+  font-weight: 550;
+  color: $msg-container-text;
+  background: $msg-container-background;
+  border: 2px solid $msg-container-border;
+  border-radius: 10px;
+  z-index: 99999;
+
+  &.success {
+    color: $msg-container-background;
+    background: $msg-container-success;
+
+    &.sameBorderColor {
+      border-color: $msg-container-success;
+    }
+  }
+
+  &.error {
+    color: $msg-container-background;
+    background: $msg-container-error;
+
+    &.sameBorderColor {
+      border-color: $msg-container-error;
+    }
+  }
+
+  &.alert {
+    color: $msg-container-background;
+    background: $msg-container-alert;
+
+    &.sameBorderColor {
+      border-color: $msg-container-alert;
+    }
+  }
+}
+
+.msgTextContainer {
+  width: 100%;
+  padding: 10px;
+  font-size: 12px;
+  font-weight: 550;
+}
+
+.btnCloseContainer {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  opacity: .85;
+  color: $msg-container-text;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+}

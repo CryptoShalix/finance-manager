@@ -1,9 +1,12 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { StorageService } from './storage.service';
+import { MessageManagerService } from '../components/message-manager/message-manager.service';
 
 import { ModalItem } from '../components/modal/modal.entity';
 import { LinkItem } from '../components/link/link.entity';
+import { MessageType } from '../components/message-manager/message-manager.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +16,35 @@ export class CoreService {
   public static appTitle = 'Finance Manager';
 
   constructor(
+    private router: Router,
     private storage: StorageService,
+    private messageService: MessageManagerService,
   ) { }
+
+  // ROUTING
+
+  goTo(url: string = '/') { this.router.navigateByUrl(url); }
+
+  navigateTo(url: string, openAs: string = '_blank'): void {
+    if (!this.isNullOrEmpty(url)) {
+      window.open(url, openAs);
+    }
+  }
+
+  // MESSAGE MANAGER
+
+  showMessage(message: string) {
+    this.messageService.sendMessage(message);
+  }
+  showSuccess(message: string) {
+    this.messageService.sendMessage(message, MessageType.SUCCESS, 15);
+  }
+  showAlert(message: string) {
+    this.messageService.sendMessage(message, MessageType.ALERT, 30);
+  }
+  showError(message: string) {
+    this.messageService.sendMessage(message, MessageType.ERROR);
+  }
 
   // MODAL-DIALOG
 
@@ -45,19 +75,42 @@ export class CoreService {
 
   // LISTS
 
-  sort(list: any[], orderColumn: string) {
-    if (list && list.length > 0 && !this.isNullOrEmpty(orderColumn)) {
-      list = list.sort(function (a, b) {
-        if (a[orderColumn] > b[orderColumn]) {
-          return 1;
-        }
-        if (a[orderColumn] < b[orderColumn]) {
-          return -1;
-        }
-        return 0;
-      });
+  sorter(fields: any[], paramToSort: string, reverse: boolean = false): any[] {
+    return fields.sort((a, b) => {
+      const dir = 1;
+      if (paramToSort[0] === '-') {
+        reverse = true;
+        paramToSort = (paramToSort as string).substring(1);
+      }
+      const firstValue: string = this.getFieldSorterValue(a, paramToSort);
+      const secondValue: string = this.getFieldSorterValue(b, paramToSort);
+
+      const firstName = this.isString(firstValue) ? firstValue.toLowerCase() : firstValue;
+      const secondName = this.isString(secondValue) ? secondValue.toLowerCase() : secondValue;
+
+      if (reverse) {
+        return firstName < secondName ? dir : firstName > secondName ? -(dir) : 0;
+      }
+      return firstName > secondName ? dir : firstName < secondName ? -(dir) : 0;
+    });
+  }
+
+  private getFieldSorterValue(item: any, propertyNames: string | string[]): string {
+    let propertyValue = propertyNames;
+    if (this.isString(propertyNames)) {
+      propertyValue = (propertyNames as string).split('.');
     }
-    return list;
+    if (propertyValue.length === 1) { return item[(propertyValue as string[])[0]]; }
+    let currentItem = item;
+    let name = '';
+    (propertyValue as string[]).map((propertyName, index) => {
+      if (index < propertyValue.length - 1) {
+        currentItem = currentItem[propertyName];
+        return;
+      }
+      name = currentItem[propertyName];
+    });
+    return name;
   }
 
   // FILE

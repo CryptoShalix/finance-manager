@@ -1,0 +1,31 @@
+<div
+  class="msgMainContainer"
+  [ngClass]="{
+    'hideMessages': messages.length===0,
+    'showOnLeft':pShowLeft,
+    'showOnRight':!pShowLeft
+  }"
+>
+
+  <div
+    *ngFor="let msgItem of messages"
+    class="msgContainer"
+    [ngClass]="{
+    'success': msgItem.type === 1, 
+    'alert': msgItem.type === 2, 
+    'error': msgItem.type === 3,
+    'sameBorderColor': pShowBorderSameColor
+  }"
+  >
+    <div
+      class="msgTextContainer"
+      [innerHTML]="(msgItem.message | translate) | safe:'html'"
+    ></div>
+
+    <mat-icon
+      class="btnCloseContainer"
+      (click)="clearMessage(msgItem.id)"
+    >close</mat-icon>
+
+  </div>
+</div>

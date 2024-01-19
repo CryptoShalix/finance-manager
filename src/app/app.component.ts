@@ -80,7 +80,9 @@ export class AppComponent implements OnInit {
   /**
    * TODO: Open settings page
    */
-  private doOpenSettings() { }
+  private doOpenSettings() {
+    this.coreService.goTo('settings');
+  }
 
   /**
    * Automatically changes the language between ES (Spanish) and EN (English)
