@@ -58,6 +58,21 @@ export enum EDateFormat {
   longSlash = 'dd/MM/yyyy HH:mm:ss',
 }
 
+export enum ETypeService {
+  AIRDROP = 'AIRDROP',
+  DEPOSIT = 'DEPOSIT',
+  INTEREST = 'INTEREST',
+  LEND = 'LEND',
+  REFERRAL = 'REFERRAL',
+  WITHDRAW = 'WITHDRAW',
+  PAYMENT = 'PAYMENT',
+}
+
+export enum ETypeOperation {
+  INCOME = 'income',
+  OUTCOME = 'outcome'
+}
+
 export enum ECurrency {
   EUR = 'eur',
   USD = 'usd',

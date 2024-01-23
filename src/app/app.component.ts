@@ -31,6 +31,10 @@ export class AppComponent implements OnInit {
     this.prepareEvents();
   }
 
+  public doOpenHome() {
+    this.coreService.goTo();
+  }
+
   private prepareMenu() {
     this.btnMenu = [];
     this.btnMenu.push(LinkItemCircle.createButton(
@@ -77,9 +81,6 @@ export class AppComponent implements OnInit {
    */
   private doRefresh() { }
 
-  /**
-   * TODO: Open settings page
-   */
   private doOpenSettings() {
     this.coreService.goTo('settings');
   }

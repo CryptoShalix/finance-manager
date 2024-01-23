@@ -44,6 +44,11 @@
       color: $toolbar-text;
       margin: 0;
       padding: 5px;
+      cursor: pointer;
+
+      &:hover {
+        color: $toolbar-text-hover;
+      }
 
       .toolbar-top-title-image {
         width: 40px;

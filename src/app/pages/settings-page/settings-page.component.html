@@ -1,5 +1,18 @@
 <div class="content">
 
-  Config page
+  <div class="settings-toolbar">
+    <app-link
+      *ngFor="let settingOption of btnSettingsToolbar"
+      [setItem]="settingOption"
+    ></app-link>
+  </div>
+
+  <div
+    *ngFor="let settings of settingsList"
+    class="settings-list-container"
+  >
+    <div class="settings-list-title">{{ settings.categoryTitle }}</div>
+
+  </div>
 
 </div>
